@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 
 const ListItem = ({ content }) => {
@@ -30,9 +30,11 @@ function App() {
 				</button>
 			</div>
 			<div id='notesContainer'>
-				{itemList.map((item, index) => {
-					return <ListItem content={item} key={index} />;
-				})}
+				{itemList
+					.filter((item) => item.includes(userInput))
+					.map((item, index) => { 
+						return <ListItem content={item} key={index} />;
+					})}
 			</div>
 		</div>
 	);
